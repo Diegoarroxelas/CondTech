@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "is_adm": true,
+        "nome": "adm default",
+        "cpf": "70363713409",
+        "senha": "123",
+        "email": "terry@gmail.com",
+        "telefone": "81989189090",
+        "apartamento": "401"
+    },
+    {
+        "id": 3,
+        "is_adm": "N",
+        "nome": "eufra",
+        "cpf": "122222",
+        "senha": "123",
+        "email": "eufra@gmail.com",
+        "telefone": "123",
+        "apartamento": "123"
+    },
+    {
+        "id": 4,
+        "is_adm": "S",
+        "nome": "terry",
+        "cpf": "2312312312",
+        "senha": "123",
+        "email": "terry",
+        "telefone": "123",
+        "apartamento": "123"
+    },
+    {
+        "id": 5,
+        "is_adm": true,
+        "nome": "Nogueira",
+        "cpf": "22222222222",
+        "senha": "123",
+        "email": "nogueira@gmail.com",
+        "telefone": "33333333333",
+        "apartamento": "222"
+    },
+    {
+        "id": 6,
+        "is_adm": true,
+        "nome": "Eduardo Am\u00c3\u00a9rico",
+        "cpf": "22222222222",
+        "senha": "123",
+        "email": "eduardo@gmail.com",
+        "telefone": "22222222222",
+        "apartamento": "122"
+    },
+    {
+        "id": 7,
+        "is_adm": true,
+        "nome": "terry",
+        "cpf": "70363713408",
+        "senha": "123",
+        "email": "terry@gmail.com",
+        "telefone": "1323",
+        "apartamento": "1222"
+    },
+    {
+        "id": 8,
+        "is_adm": false,
+        "nome": "Terry",
+        "cpf": "11111111111",
+        "senha": "qweqw",
+        "email": "asdas",
+        "telefone": "dada",
+        "apartamento": "sad"
+    },
+    {
+        "id": 9,
+        "is_adm": true,
+        "nome": "Terry",
+        "cpf": "s",
+        "senha": "",
+        "email": "asd",
+        "telefone": "asd",
+        "apartamento": "asd"
+    },
+    {
+        "id": 10,
+        "is_adm": true,
+        "nome": "terry",
+        "cpf": "22222222222",
+        "senha": "123",
+        "email": "terry@gmail.com",
+        "telefone": "123",
+        "apartamento": "123"
+    }
+]
