@@ -1,6 +1,5 @@
 import json
 
-# Obtém o próximo ID
 def obter_proximo_id():
     file = 'database/usuarios.json'
     
@@ -11,7 +10,6 @@ def obter_proximo_id():
         ids = [int(row['id']) for row in data]
         return max(ids) + 1 if ids else 1
 
-# Cadastrar Usuário
 def cadastrarUsuario(id, is_adm, nome, cpf, senha, email, telefone, apartamento):
     file = 'database/usuarios.json'
     
@@ -43,7 +41,6 @@ def cadastrarUsuario(id, is_adm, nome, cpf, senha, email, telefone, apartamento)
     
     return usuario_cadastrado
 
-# Atualizar Usuários
 def atualizarUsuario(user_to_update):
     file = 'database/usuarios.json'
     user_updated = False
@@ -51,14 +48,40 @@ def atualizarUsuario(user_to_update):
     
     users = buscarUsuario()
     for c in users:
-        if user_to_update == c['nome'].upper():
+        if user_to_update == c['id']:
             c['nome'] = str(input("Novo nome: "))
                     
             c['senha'] = str(input("Nova senha: "))
             formatarSenha(c['senha'])
                         
-            c['is_adm'] = str(input("Usuário é adm: [S/N] ")).upper()
-            formatarADM(c['is_adm'])
+            is_adm = str(input("Usuário é adm: [S/N] ")).upper()
+            c['is_adm'] = formatarADM(is_adm)
+                       
+            c['email'] = str(input("Novo email: "))      
+            c['telefone'] = str(input("Novo seu telefone: "))
+            c['apartamento'] = str(input("Novo seu apartamento: "))
+        
+            # escrever em arquivos json
+            with open(file, 'w', encoding='utf8') as arquivo:
+                arquivo.write(json.dumps(users, indent=4))
+        
+            user_updated = True
+            break
+    
+    return user_updated
+
+def atualizarUsuarioMorador(user_to_update):
+    file = 'database/usuarios.json'
+    user_updated = False
+    user = {}
+    
+    users = buscarUsuario()
+    for c in users:
+        if user_to_update == c['id']:
+            c['nome'] = str(input("Novo nome: "))
+                    
+            c['senha'] = str(input("Nova senha: "))
+            formatarSenha(c['senha'])
                        
             c['email'] = str(input("Novo email: "))      
             c['telefone'] = str(input("Novo seu telefone: "))
@@ -73,7 +96,6 @@ def atualizarUsuario(user_to_update):
     
     return user_updated
     
-# Deletar Usuários
 def deletarUsuario(user_to_delete):
     file = 'database/usuarios.json'
     user_deleted = False
@@ -82,7 +104,7 @@ def deletarUsuario(user_to_delete):
     # Verifica todos os registros que não batem com o nome e adiciona em uma lista
     users = buscarUsuario()
     for c in users:
-        if user_to_delete != c['nome'].upper():
+        if user_to_delete != c['id']:
             new_list.append(c)
     
     users = new_list 
@@ -94,7 +116,6 @@ def deletarUsuario(user_to_delete):
     
     return user_deleted
 
-# Buscar Usuários
 def buscarUsuario():
     file = 'database/usuarios.json'
     
@@ -104,7 +125,12 @@ def buscarUsuario():
             
     return data
 
-# Autenticar Usuários
+def listar_informacoes_usuario(data, id):
+    for usuario in data['usuarios']:
+        if usuario['id'] == id:
+            return usuario
+    return None
+
 def autenticar_usuario(cpf, senha):
     global id_user, is_adm, nome_user, cpf_user, senha_user, email_user, telefone_user, apto_user
     usuario_autenticado = False
@@ -135,7 +161,6 @@ def dadosUsuarioAutenticado(cpf):
         if cpf == u['cpf']:
             return u
 
-# FORMATAÇÕES DE CPF, SENHA E ADMNINISTRAÇÃO PARA CADASTRO E UPDATE DE USUÁRIOS 
 def formatarADM(is_adm):
 
     while is_adm not in "SN":
@@ -143,10 +168,12 @@ def formatarADM(is_adm):
         
         is_adm = str(input("Administrador? [S/N]: ")).upper()
                     
-        if is_adm == "S":
-            is_adm = True
-        else:
-            is_adm = False
+    if is_adm == "S":
+        is_adm = True
+    else:
+        is_adm = False
+    
+    return is_adm
 
 def formatarNome(nome):
     while nome == "":

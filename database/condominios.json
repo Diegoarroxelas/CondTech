@@ -1,26 +1,10 @@
 [
     {
-        "id": 2,
-        "nome": "Ines Andreasa",
-        "endereco": "Avenida Recife, Areias - Recife/PE",
-        "cep": "22222-222",
-        "qntd_andares": "22",
-        "qntd_apto": "22"
-    },
-    {
-        "id": 3,
-        "nome": "Casa de Bruno",
-        "endereco": "Rua tal , Bairro tal - Carpina/PE",
-        "cep": "22222-222",
-        "qntd_andares": "12",
-        "qntd_apto": "2"
-    },
-    {
-        "id": 4,
-        "nome": "Edif\u00edcio Zumbi dos Palmares",
-        "endereco": "Avenida Santos Dummont , Aflitos - Recife/PE",
-        "cep": "52050-035",
-        "qntd_andares": "20",
-        "qntd_apto": "200"
+        "id": 1,
+        "nome": "Venancio barboas",
+        "endereco": "rua ministro marcos freire, casa caida - olinda/PE",
+        "cep": "12233-4",
+        "qntd_andares": "25",
+        "qntd_apto": "3"
     }
 ]
