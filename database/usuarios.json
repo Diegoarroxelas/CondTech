@@ -2,8 +2,8 @@
     {
         "id": 1,
         "is_adm": true,
-        "nome": "Terry Damasio Santos",
-        "cpf": "70363713409",
+        "nome": "Terry Damasio Santos ",
+        "cpf": "12345678910",
         "senha": "12345",
         "email": "terrydamasio610@gmail.com",
         "telefone": "81989189090",
@@ -11,32 +11,22 @@
     },
     {
         "id": 2,
-        "is_adm": false,
-        "nome": "Kerry Muniz",
-        "cpf": "12345678910",
-        "senha": "12345",
-        "email": "kerry877@gmail.com",
-        "telefone": "81989189090",
-        "apartamento": "301"
+        "is_adm": true,
+        "nome": "terry",
+        "cpf": "12345678911",
+        "senha": "123",
+        "email": "terrydamasio@gmail.com",
+        "telefone": "81918",
+        "apartamento": "123"
     },
     {
         "id": 3,
         "is_adm": true,
-        "nome": "Diego",
-        "cpf": "12345678910",
+        "nome": "terry",
+        "cpf": "12345678911",
         "senha": "12345",
-        "email": "Diego@gmail.com",
-        "telefone": "81999740440",
-        "apartamento": "303"
-    },
-    {
-        "id": 4,
-        "is_adm": "S",
-        "nome": "Diego",
-        "cpf": "10362060410",
-        "senha": "diego",
-        "email": "Diegoarroxelas@gmail.com",
-        "telefone": "81999740440",
-        "apartamento": "303"
+        "email": "terrydamasio@gmail.com",
+        "telefone": "81989189090",
+        "apartamento": "123"
     }
 ]

@@ -4,16 +4,15 @@ def obter_proximo_id():
     file = 'database/usuarios.json'
     
     with open(file, mode='r') as arquivo:
-        read = arquivo.read() # ler os dados como texto
-        data = json.loads(read) # carregar os dados no formato json
+        read = arquivo.read()
+        data = json.loads(read)
         
         ids = [int(row['id']) for row in data]
         return max(ids) + 1 if ids else 1
 
 def cadastrarUsuario(id, is_adm, nome, cpf, senha, email, telefone, apartamento):
     file = 'database/usuarios.json'
-    
-    # cria objeto para escrever
+
     user = {
         "id": id,
         "is_adm": is_adm,
@@ -26,14 +25,11 @@ def cadastrarUsuario(id, is_adm, nome, cpf, senha, email, telefone, apartamento)
     }
     
     usuario_cadastrado = False
-    # abre o arquivo e carrega o conteúdo
     with open(file, 'r', encoding='utf8') as arquivo:
         usuarios = json.load(arquivo)
     
-    # adiciona o novo usuário na lista    
     usuarios.append(user)
     
-    # escrever em arquivos json
     with open(file, 'w', encoding='utf8') as arquivo:
         arquivo.write(json.dumps(usuarios, indent=4))
         
@@ -58,10 +54,9 @@ def atualizarUsuario(user_to_update):
             c['is_adm'] = formatarADM(is_adm)
                        
             c['email'] = str(input("Novo email: "))      
-            c['telefone'] = str(input("Novo seu telefone: "))
-            c['apartamento'] = str(input("Novo seu apartamento: "))
-        
-            # escrever em arquivos json
+            c['telefone'] = str(input("Novo telefone: "))
+            c['apartamento'] = str(input("Novo apartamento: "))
+
             with open(file, 'w', encoding='utf8') as arquivo:
                 arquivo.write(json.dumps(users, indent=4))
         
@@ -84,10 +79,9 @@ def atualizarUsuarioMorador(user_to_update):
             formatarSenha(c['senha'])
                        
             c['email'] = str(input("Novo email: "))      
-            c['telefone'] = str(input("Novo seu telefone: "))
-            c['apartamento'] = str(input("Novo seu apartamento: "))
-        
-            # escrever em arquivos json
+            c['telefone'] = str(input("Novo telefone: "))
+            c['apartamento'] = str(input("Novo apartamento: "))
+
             with open(file, 'w', encoding='utf8') as arquivo:
                 arquivo.write(json.dumps(users, indent=4))
         
@@ -101,14 +95,12 @@ def deletarUsuario(user_to_delete):
     user_deleted = False
     new_list = []
 
-    # Verifica todos os registros que não batem com o nome e adiciona em uma lista
     users = buscarUsuario()
     for c in users:
         if user_to_delete != c['id']:
             new_list.append(c)
     
-    users = new_list 
-    # escrever em arquivos json
+    users = new_list
     with open(file, 'w', encoding='utf8') as arquivo:
         arquivo.write(json.dumps(users, indent=4))
         
@@ -120,8 +112,8 @@ def buscarUsuario():
     file = 'database/usuarios.json'
     
     with open(file, 'r') as usuario:
-        read = usuario.read() # ler os dados como texto
-        data = json.loads(read) # carregar os dados no formato json
+        read = usuario.read()
+        data = json.loads(read)
             
     return data
 
@@ -168,18 +160,23 @@ def formatarADM(is_adm):
         
         is_adm = str(input("Administrador? [S/N]: ")).upper()
                     
-    if is_adm == "S":
-        is_adm = True
-    else:
-        is_adm = False
+        if is_adm == "S":
+            is_adm = True
+            break
+        else:
+            is_adm = False
+            break
     
     return is_adm
 
 def formatarNome(nome):
     while nome == "":
         print("Campo obrigatório!")
-        
+
         nome = str(input('Nome: '))
+        
+        if nome != "":
+            break
 
 def formatarCPF(cpf):
     cpf_cadastrado = False
@@ -188,7 +185,7 @@ def formatarCPF(cpf):
     for c in users:
         if cpf == c['cpf']:
             cpf_cadastrado = True
-        break
+            break
     
     while len(cpf) != 11 or not cpf.isnumeric() or cpf_cadastrado:
         if len(cpf) != 11: 
@@ -200,27 +197,42 @@ def formatarCPF(cpf):
 
         cpf = str(input("CPF: "))
 
+        if len(cpf) == 11 or cpf.isnumeric():      
+            break
+
 def formatarSenha(senha):
     while len(senha) < 5:
         if senha == "" or len(senha) < 5:
             print("Este campo é obrigatório e deve conter no mínimo 5 caracteres!")
 
-        senha = str(input("Digite seu senha: "))
-    
+        senha = str(input("Digite seu senha: ")) 
+
+        if senha != "":
+            break
+
 def formatarEmail(email):
     while email == "":
-        print("Campo obrigatório!")
+        print("Campo obrigatório!")    
         
         email = str(input('E-mail: '))
 
+        if email != "":
+            break
+
 def formatarTelefone(telefone):
     while telefone == "":
-        print("Campo obrigatório!")
-        
+        print("Campo obrigatório!")    
+    
         telefone = str(input('Telefone: '))
+
+        if telefone != "": 
+            break
 
 def formatarApartamento(apartamento):
     while apartamento == "":
         print("Campo obrigatório!")
-        
+
         apartamento = str(input('Apartamento: '))
+
+        if apartamento != "":
+            break
